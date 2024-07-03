@@ -1,0 +1,13 @@
+fstool syslog set_property config.type1.option.pf_logs "pfsense DHCP Logs"
+fstool syslog set_property config.type2.option.pf_logs "pfsense DHCP Logs"
+fstool syslog set_property config.type3.option.pf_logs "pfsense DHCP Logs"
+fstool syslog set_property config.type4.option.pf_logs "pfsense DHCP Logs"
+fstool syslog set_property config.type5.option.pf_logs "pfsense DHCP Logs"
+
+fstool syslog set_property template.pf_dhcp_connect.type "pf_logs"
+fstool syslog set_property template.pf_dhcp_connect.regexp ".*IP:\ (\S*), MAC:\ (\S*)"
+fstool syslog set_property template.pf_dhcp_connect.properties "\$ip,\$mac"
+
+fstool syslog set_property template.pf_dhcp_connect.set_true "\$online"
+
+fstool service restart
